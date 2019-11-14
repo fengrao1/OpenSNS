@@ -5,8 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div style="font-size:12px">自动化测试报告-----
-	<br/>本次共运行自动化case:case:${length}个，其中FAIL:${faillength}个
+	<div style="font-size:12px">自动化测试报告-----${date?string("yyyy-MM-dd HH:mm:ss")}
+	<br/>本次共运行自动化case:${length}个，其中失败的有:${faillength}个，成功的有:${passlength}个
 
 	<br/>
 	<br/>
@@ -57,7 +57,7 @@
     <td>${case.getMethod()}</td>
     <td>${case.getAttribute("name")}</td>
     <td>
-    	PASS
+    	<div style="color:red;">PASS</div>
     </td>
   </tr>
   </#list>

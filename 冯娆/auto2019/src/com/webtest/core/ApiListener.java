@@ -15,6 +15,7 @@ import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
 import com.webtest.freemarker.WriteFreeMaker;
+import com.webtest.utils.ReadProperties;
 
 public class ApiListener extends TestListenerAdapter{
 	WriteFreeMaker ft=new WriteFreeMaker();
@@ -59,7 +60,6 @@ public class ApiListener extends TestListenerAdapter{
         context.put("faillength",failedList.size());   
         context.put("passlength",passedList1.size()); 
         context.put("length",passedList.size()+failedList.size()); 
-        context.put("failcasesize",failedList.size());
         context.put("failedList", failedList);
         context.put("passedList", passedList);
         try {
@@ -93,14 +93,14 @@ public class ApiListener extends TestListenerAdapter{
 		String emailContent=this.writeResultToMail();
 		System.out.println(emailContent);
 		
-//		String emailTitle=ReadPro.getPropValue("mail_title")+"----"+this.getTime();
-//		String toMail=ReadPro.getPropValue("to_mail");
-//		try {
-//			MailUtil.sendEmail(toMail,emailTitle, emailContent);
-//		} catch (UnsupportedEncodingException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		String emailTitle=ReadProperties.getPropValue("mail_title")+"----"+this.getTime();
+		String toMail=ReadProperties.getPropValue("to_mail");
+		try {
+			MailUtil.sendEmail(toMail,emailTitle, emailContent);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
