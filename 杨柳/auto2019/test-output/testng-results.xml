@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="10217" started-at="2019-11-14T13:06:19Z" finished-at="2019-11-14T13:06:29Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="10217" started-at="2019-11-14T13:06:19Z" finished-at="2019-11-14T13:06:29Z">
+      <class name="com.webtest.demo.Dome">
+        <test-method status="PASS" signature="doBeforeClass()[pri:0, instance:com.webtest.demo.Dome@6d4b1c02]" name="doBeforeClass" is-config="true" duration-ms="10181" started-at="2019-11-14T13:06:19Z" finished-at="2019-11-14T13:06:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- doBeforeClass -->
+        <test-method status="PASS" signature="demo()[pri:0, instance:com.webtest.demo.Dome@6d4b1c02]" name="demo" duration-ms="10" started-at="2019-11-14T13:06:29Z" finished-at="2019-11-14T13:06:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- demo -->
+      </class> <!-- com.webtest.demo.Dome -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
