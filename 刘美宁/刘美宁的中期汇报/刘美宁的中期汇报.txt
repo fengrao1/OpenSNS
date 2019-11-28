@@ -1,0 +1,27 @@
+进度：
+1.完成了freemarker框架，能够美化测试报告，显示执行的测试用例条数，成功用例的展示，失败的展示
+2.进行了后台管理的自动化测试中的系统模块下的消息管理，网站设置，导航管理，群发消息，计划任务
+3.消息管理中的刷新功能，页面展示，以及会话列表模板，消息模板的添加
+4.网站设置中用户名注册的限制设置，网站名设置，以及配置管理的新增，还有页面展示
+5.导航管理中的用户导航中的一级导航的添加，顶部导航的一级导航和子导航的添加
+6.计划列表的启动与暂停
+7.给不同的用户的群发消息操作
+
+遇到问题：
+1.对元素的定位不准确，使用xpath绝对路径
+2.浮动的定位问题，在前一个测试用例的基础上不能对顶部导航中进行鼠标浮动，对下面的隐藏子导航进行点击，子导航无法显示
+3.有些后台的配置不能进行操作，操作执行后，配置出现问题
+4.在有些测试之后，需要重新进行登录操作才能进行下面的执行
+
+
+解决：
+1.对于浮动问题，我使用webtest.mouseoverElement进行操作，浮动到顶部导航想要显示子导航的上面，对于子导航的无法显示，使用了对标签的修改open
+WebElement textEle=driver.findElement(By.xpat("/html/body/header/nav/div/ul[1]/li[4]"));
+System.out.println(textEle.getAttribute("class"));//输入改变之前的值
+System.out.println(textEle.getAttribute("data-id"));//输入改变之前的值
+String jsStrToSetAtt="arguments[0].setAttribute(arguments[1],arguments[2])";//改变属性的js
+((JavascriptExecutor) driver).executeScript(jsStrToSetAtt, textEle, "class", "mega-menu-dropdown active open");
+System.out.println(textEle.getAttribute("class"));//输入改变后前的值
+
+解决问题
+2.对于重新登录的问题，我可以使用@BeforeMethod注解，让他在每次执行测试用例之前，都进行一遍登录
