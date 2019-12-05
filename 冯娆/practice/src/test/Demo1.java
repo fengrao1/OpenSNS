@@ -5,7 +5,7 @@ import static org.testng.Assert.assertEquals;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-@Listeners(com.webtest.core.ApiListener.class)
+@Listeners(com.webtest.core.WebTestListener.class)
 public class Demo1 {
 	@Test(description="test1")
 	public void test1() {
