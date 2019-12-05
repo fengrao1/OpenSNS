@@ -2,187 +2,117 @@ package opensns;
 
 import static org.testng.Assert.assertEquals;
 
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.webtest.core.BaseTest;
+import com.webtest.dataprovider.ExcelDataProvider;
+
 import static org.testng.Assert.assertTrue;
 public class Demo extends BaseTest {
+	SoftAssert soft =new SoftAssert();
 	
-	@Test(description="发布微博-文字")
-	public void publish1() throws InterruptedException {
-		webtest.click("link=微博");
-		webtest.click("title=微博");
-		Thread.sleep(2000);
-		webtest.click("class=add-weibo");
-		Thread.sleep(2000);
-		webtest.click("class=icon-zs");
-		Thread.sleep(1000);
-		webtest.type("id=weibo_content","发布一条文字动态");
-		webtest.click("class=send-right");
-		assertTrue(webtest.isTextPresent("发布成功！"));
+	@DataProvider(name="comment")
+	public static Object[][] words1() throws Exception{
+		ExcelDataProvider excel=new ExcelDataProvider();
+		return excel.getTestDataByExcel("E:\\sanshang\\train2\\comment.xlsx", "Sheet1");
 	}
 	
-	@Test(description="发布微博-表情")
-	public void publish3() throws InterruptedException {
-		webtest.click("link=微博");
-		webtest.click("title=微博");
-		Thread.sleep(2000);
-		webtest.click("class=add-weibo");
-		Thread.sleep(2000);
-		webtest.click("class=icon-zs");
-		Thread.sleep(1000);
-		webtest.type("id=weibo_content","[deyi]");
-		webtest.click("class=send-right");
-		assertTrue(webtest.isTextPresent("发布成功！"));
+	@DataProvider(name="topic")
+	public static Object[][] words2() throws Exception{
+		ExcelDataProvider excel=new ExcelDataProvider();
+		return excel.getTestDataByExcel("E:\\sanshang\\train2\\topic.xlsx", "Sheet1");
 	}
 	
-	@Test(description="发布微博-空白内容")
-	public void publish2() throws InterruptedException {
-		webtest.click("link=微博");
-		webtest.click("title=微博");
-		Thread.sleep(2000);
-		webtest.click("class=add-weibo");
-		Thread.sleep(2000);
-		webtest.click("class=icon-zs");
-		Thread.sleep(1000);
-		webtest.type("id=weibo_content","");
-		webtest.click("class=send-right");
-		assertTrue(webtest.isTextPresent("发布失败"));
+	@DataProvider(name="sign")
+	public static Object[][] words3() throws Exception{
+		ExcelDataProvider excel=new ExcelDataProvider();
+		return excel.getTestDataByExcel("E:\\sanshang\\train2\\sign.xlsx", "Sheet1");
+	}
+	
+	@DataProvider(name="search")
+	public static Object[][] words4() throws Exception{
+		ExcelDataProvider excel=new ExcelDataProvider();
+		return excel.getTestDataByExcel("E:\\sanshang\\train2\\search.xlsx", "Sheet1");
 	}
 	
 
-	@Test(description="发布微博-话题")
-	public void publish4() throws Exception {
+	
+
+
+	//评论某一条微博   10条
+	@Test(dataProvider="comment",description="评论")
+	public void Comment(String view) throws Exception{
 		webtest.click("link=微博");
-		webtest.click("title=微博");
-		Thread.sleep(2000);
-		webtest.click("class=add-weibo");
-		Thread.sleep(2000);
-		webtest.click("class=icon-zs");
-		webtest.click("class=iconfont icon-tianjiahuati i-ht");
 		Thread.sleep(1000);
-//		webtest.type("id=weibo_content","测试话题");
-		webtest.click("class=send-right");
-		assertTrue(webtest.isTextPresent("发布成功！"));
-	}
-	
-	@Test(description="取消发送微博")
-	public void publish5() throws InterruptedException {
-		webtest.click("link=微博");
-		webtest.click("title=微博");
+		webtest.click("xpath=/html/body/div[4]/div/div/div[1]/div[7]/div[1]/div[1]/div/div[1]/div[2]/div[2]/a");
+
+//		webtest.click("xpath=//*[@id=\"weibo_36\"]/div[1]/div/div[1]/div[2]/div[2]/a");
 		Thread.sleep(2000);
-		webtest.click("class=add-weibo");
-		Thread.sleep(2000);
-		webtest.click("class=icon-zs");
+		webtest.type("xpath=//input[@placeholder='评论（Ctrl+Enter）']",view);
+		Thread.sleep(3000);
+		webtest.click("class=os-icon-paper-plane");		
 		Thread.sleep(1000);
-		webtest.type("id=weibo_content","abcd");
-		webtest.click("class=iconfont icon-cuo");
-		assertTrue(webtest.isTextPresent("取消发送"));
+		assertTrue(webtest.isTextPresent("评论成功") || webtest.isTextPresent("长度必须在1到500之间"));
+	//	assertTrue(webtest.isTextPresent("长度必须在1到500之间"));
 	}
 	
-	@Test(description="点赞")
-	public void DianZan() throws Exception{
+	
+//	@Test(description="签到")
+//	public void Register() throws Exception{
+//		webtest.click("link=微博");
+//		Thread.sleep(2000);
+//		webtest.click("class=c-icon c-icon-checking");
+//		webtest.click("link=签到");
+//		Thread.sleep(2000);
+//		webtest.click("class=btn-sign show-check");
+//		assertTrue(webtest.isTextPresent("已签到"));
+//	}
+	
+
+	//针对某一话题发表内容   10条
+	@Test(dataProvider="topic",description="发布话题")
+	public void PublishTopic(String topic) throws Exception{
 		webtest.click("link=微博");
+		webtest.click("class=topic-head");
 		Thread.sleep(2000);
-		webtest.click("id=support_Weibo_weibo_13");
-	}
-	
-	
-	@Test(description="查看我的关注")
-	public void Follow() throws Exception{
-		webtest.click("link=微博");
+		webtest.click("link=测试");
+		webtest.click("xpath=//*[@class=\"topic-content\"]/ul/li[1]/a/div[2]");
 		Thread.sleep(2000);
-		webtest.click("id=concerned");
-		assertTrue(webtest.isTextPresent("我的关注"));
-	}
-	
-	@Test(description="查看全站动态")
-	public void AllTrends() throws Exception{
-		webtest.click("link=微博");
-		Thread.sleep(2000);
-		webtest.click("id=all");
-		assertTrue(webtest.isTextPresent("全站动态"));
-	}
-	
-	
-	@Test(description="查看热门动态")
-	public void HotTrends() throws Exception{
-		webtest.click("link=微博");
-		Thread.sleep(2000);
-		webtest.click("id=hot");
-		assertTrue(webtest.isTextPresent("热门动态"));
-	}
-	
-	@Test(description="查看我的喜欢")
-	public void MyLike() throws Exception{
-		webtest.click("link=微博");
-		Thread.sleep(2000);
-		webtest.click("id=fav");
-		assertTrue(webtest.isTextPresent("我的喜欢"));
-	}
-	
-	@Test(description="评论")
-	public void Comment() throws Exception{
-		webtest.click("link=微博");
-		Thread.sleep(3000);
-		webtest.click("data-weibo-id=14");
-		webtest.type("xpath=//input[@placeholder='评论（Ctrl+Enter）']","哈哈哈");
-		Thread.sleep(3000);
-		assertTrue(webtest.isTextPresent("评论成功"));
-	}
-	
-	@Test(description="邀请")
-	public void Invite() throws Exception{
-		webtest.click("link=微博");
-		Thread.sleep(2000);
-		webtest.click("link=立即邀请");
-		webtest.click("link=邀请码列表");
-		Thread.sleep(3000);
-		assertTrue(webtest.isTextPresent("获得邀请码"));
-	}
-	
-	@Test(description="生成邀请码")
-	public void Invite2() throws Exception{
-		webtest.click("link=微博");
-		Thread.sleep(2000);
-		webtest.click("link=立即邀请");
-		webtest.click("link=生成邀请码");
+		webtest.click("link=发动态");
+		webtest.type("xpath=//textarea[@placeholder='写点什么吧～～']",topic);
+		webtest.click("xpath=//input[@value='发布 Ctrl+Enter']");
 		Thread.sleep(1000);
-		webtest.click("link=兑换名额");
-		Thread.sleep(2000);
-		webtest.click("link=兑换");
-		Thread.sleep(2000);
-		webtest.click("link=生成邀请码");
-		assertTrue(webtest.isTextPresent("获得邀请码"));
-	}
+		assertTrue(webtest.isTextPresent("发布成功"));
+	}	
+
 	
-	@Test(description="查看排行榜")
-	public void Rank() throws Exception{
+	//修改个性签名   10条
+	@Test(dataProvider="sign",description="修改个性签名")
+	public void ChangeSignature(String sign) throws Exception{
 		webtest.click("link=微博");
+		webtest.click("xpath=//*[@class=\"dropdown li-hover self-info\"]/a");
 		Thread.sleep(2000);
-		webtest.click("link=排行");
+		webtest.click("xpath=//*[@class=\"link-wrap\"]/div[2]/a/div");
 		Thread.sleep(3000);
-		assertTrue(webtest.isTextPresent("排行榜"));
+		webtest.typeAndClear("xpath=//textarea[@id='signature']",sign);	
+		webtest.click("xpath=//button[@type='submit']");
+		Thread.sleep(1000);
+		assertTrue(webtest.isTextPresent("设置成功") || webtest.isTextPresent("签名不能超过") )  ;
 	}
 	
-	@Test(description="签到")
-	public void Register() throws Exception{
+	//微博搜索             8条
+	@Test(dataProvider="search",description="微博搜索")
+	public void Search(String para) throws Exception{
 		webtest.click("link=微博");
+		webtest.click("xpath=//*[@class=\"animate-wrap\"]/i");
+		webtest.typeAndClear("xpath=//input[@id='search-text']",para);
+		Thread.sleep(1000);
+		webtest.enterClick();
 		Thread.sleep(2000);
-		webtest.click("class=c-icon c-icon-checking");
-		webtest.click("link=签到");
-		Thread.sleep(2000);
-		webtest.click("class=btn-sign show-check");
-//		assertTrue(webtest.isTextPresent("签到成功"));
+		assertTrue(webtest.isTextPresent("没有相关内容") || webtest.isTextPresent("我的动态"));
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
 
