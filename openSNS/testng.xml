@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+  
+<suite name="Suite1" verbose="1" > 
+  <test name="test">
+    <classes>
+    	<class name="jiaweiwen.register"/>
+    	<class name="jiaweiwen.login"/>
+		<class name="jiaweiwen.operation_tools"/>
+		<class name="jiaweiwen.usercenter"/>
+		<class name="lishaohan.L_Login"/>
+		<class name="fengrao.Demo1"/>
+      	<class name="fengrao.Demo2"/>
+		<class name="liziran.Demo1"/>
+      	<class name="liziran.Demo2"/>
+      	<class name="liziran.Demo3"/>
+      	<class name="zhaoruoxi.Demo"/>
+      	<class name="zhaoruoxi.Demo2"/>
+      	<class name="yangliu.Demo1"/>
+      	<class name="liumeining.DemoTest"/>
+    </classes>
+  </test>
+</suite>
