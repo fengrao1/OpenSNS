@@ -1,75 +1,73 @@
-package com.example.demo;
+import static org.testng.Assert.assertEquals;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
 
-/**
- * @author æå°‘æ¶µ
- * å­˜å‚¨ç”¨æˆ·åœ°å€ä¿¡æ¯
- */
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.CookieStore;
+import org.testng.annotations.Test;
+
+import com.edu.utils.Common;
+
+import net.sf.json.JSONObject;
+//¿ÉÓÃ--goodlistºÍÊÕ»õµØÖ·listºÍ»ñÈ¡ÓÊ·Ñ
 public class List {
 
-	public Map<String, Object> getList(){
-		Map<String, Object> li=new HashMap<String, Object>();
-		li.put("searchParamList", getParamList());
-		li.put("limit", 50);
-		li.put("total", 2);
-		li.put("list", list());
-		li.put("perfix", "A.");
-		li.put("fgUserId", 74966314);
-		return li;
+	/**
+	 * @author ÀîÉÙº­
+	 * ²âÊÔ»ñÈ¡Ö¸¶¨ÉÌÆ·ĞÅÏ¢ÁĞ±í½Ó¿Ú
+	 */
+	@Test
+	public void listTest() throws ClientProtocolException, IOException {
+		String result = HttpDriver.doGet("/common/skuList2", "goodsId=1");
+		JSONObject jsonresult = JSONObject.fromObject(result);
+		assertEquals(jsonresult.getString("message"), "success");
+		assertEquals(jsonresult.getInt("code"), 200);
 	}
-	public ArrayList<Integer> getParamList(){
-		ArrayList<Integer> paramList=new ArrayList<Integer>();
-		paramList.add(74966314);
-		paramList.add(50);
-		paramList.add(0);
-		return paramList;
+	/**
+	 * @author ÀîÉÙº­
+	 * ²âÊÔ»ñÈ¡ËùÓĞÉÌÆ·ĞÅÏ¢ÁĞ±í½Ó¿Ú
+	 */
+	@Test
+	public void listTest1() throws ClientProtocolException, IOException {
+		String result = HttpDriver.doGet1("/common/skuList1");
+		JSONObject jsonresult = JSONObject.fromObject(result);
+		assertEquals(jsonresult.getString("message"), "success");
+		assertEquals(jsonresult.getInt("code"), 200);
+	}
+	/**
+	 * @author ÀîÉÙº­
+	 * ²âÊÔÌîĞ´´íÎóÉÌÆ·ĞÅÏ¢½Ó¿Ú
+	 */
+	@Test
+	public void listTest2() throws ClientProtocolException, IOException {
+		String result = HttpDriver.doGet("/common/skuList3", "goodsId=abc");
+		JSONObject jsonresult = JSONObject.fromObject(result);
+		assertEquals(jsonresult.getInt("code"), 400);
+	}
+	/**
+	 * @author ÀîÉÙº­
+	 * ²âÊÔ»ñÈ¡µØÖ·ĞÅÏ¢½Ó¿Ú
+	 */
+	@Test
+	public void addressList() throws Exception {
+		CookieStore cookieStore =Common.getCookie("20000000003", "netease123");
+		String result = HttpDriver.cookieGet1("/fgadmin/address/list", cookieStore);
+		JSONObject jsonresult = JSONObject.fromObject(result);
+		assertEquals(jsonresult.getString("message"), "success");
+		assertEquals(jsonresult.getInt("code"), 200);
+	}
+	/**
+	 * @author ÀîÉÙº­
+	 * ²âÊÔ»ñÈ¡ÔË·ÑĞÅÏ¢½Ó¿Ú
+	 */
+	@Test
+	public void getFee() throws Exception {
+		CookieStore cookieStore =Common.getCookie("20000000003", "netease123");
+		String para="id=1&addressDetail=Õã½­Ê¡_º¼ÖİÊĞ_±õ½­Çø";
+		String result = HttpDriver.cookieGet("/common/getTransportFee",para, cookieStore);
+		JSONObject jsonresult = JSONObject.fromObject(result);
+		assertEquals(jsonresult.getString("message"), "success");
+		assertEquals(jsonresult.getInt("code"), 200);
 	}
 	
-	public ArrayList<Object> list(){
-		ArrayList<Object> list=new ArrayList<Object> ();
-		Map<String, Object> list1=new HashMap<String, Object>();
-		Map<String, Object> list2=new HashMap<String, Object>();
-		Map<String, Object> fgUser1=getFgUser(74966314,"86","20000000000","1454057846653","86/20000000000","æµ‹è¯•ç”¨æˆ·20","2016-01-29 16:57:26","æ‰‹æœº");
-		Map<String, Object> fgUser2=getFgUser(74966314,"86","20000000000","1454057846653","86/20000000000","æµ‹è¯•ç”¨æˆ·20","2016-01-29 16:57:26","æ‰‹æœº");
-		list1=getGetList(77479641,99,"æµ™æ±Ÿçœ","æ­å·å¸‚","æ»¨æ±ŸåŒº","å¼ ä¸‰","12345678901","æµ™æ±Ÿå¤§å­¦",74966314,fgUser1);
-		list2=getGetList(77479640,99,"æµ™æ±Ÿçœ","æ­å·å¸‚","æ»¨æ±ŸåŒº","å¼ ä¸‰","12345678901","æµ™æ±Ÿå¤§å­¦",74966314,fgUser2);
-		list.add(list1);
-		list.add(list2);
-		return list;
-	}
-	public Map<String, Object> getGetList(int id,int sort,String province,String city,String area,String receiverName,String cellPhone,String addressDetail,int fgUserId,Map<String, Object> fgUser ){
-		//-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------fguser,éœ€è¦å†å†™ä¸€ä¸ªæ–¹æ³•
-		Map<String, Object>listMap=new HashMap<String, Object>();
-		listMap.put("id", id);
-		listMap.put("sort", sort);
-		listMap.put("province", province);
-		listMap.put("city", city);
-		
-		listMap.put("area", area);
-		listMap.put("receiverName", receiverName);
-		listMap.put("cellPhone", cellPhone);
-		listMap.put("addressDetail", addressDetail);
-		listMap.put("fgUserId", fgUserId);
-		listMap.put("fgUser", fgUser);
-		return listMap;
-	
-	
-	}
-	
-	public Map<String, Object> getFgUser(int id,String phoneArea,String phoneNumber,String createTime,String userAccount,String userName,String createTimeStr,String platformDescribe){
-		Map<String, Object>userMap=new HashMap<String, Object>();
-		userMap.put("id", id);
-		userMap.put("phoneArea", phoneArea);
-		userMap.put("phoneNumber", phoneNumber);
-		userMap.put("createTime", createTime);
-		userMap.put("userAccount", userAccount);
-		userMap.put("userName", userName);
-		userMap.put("createTimeStr", createTimeStr);
-		userMap.put("platformDescribe", platformDescribe);
-		return userMap;
-		
-	}
 }
