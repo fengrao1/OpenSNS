@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="test">
+    <classes>
+      <class name="com.edu.qingguo.LoginTest"/>
+      <class name="com.edu.qingguo.SkulistTest"/>
+      <class name="com.edu.qingguo.GetTransporFee"/>
+      <class name="com.edu.qingguo.AddressList"/>
+      <class name="com.edu.qingguo.Submit"/>
+      <class name="com.edu.qingguo.NewAddress"/>
+      <class name="com.edu.qingguo.DeleteAddress"/>
+    </classes>
+  </test> <!-- test -->
+</suite> <!-- Failed suite [Suite] -->

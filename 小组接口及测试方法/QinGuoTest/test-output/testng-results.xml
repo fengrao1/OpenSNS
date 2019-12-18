@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="14" passed="14">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="1132" started-at="2019-12-18T09:40:08Z" finished-at="2019-12-18T09:40:09Z">
+    <groups>
+    </groups>
+    <test name="test" duration-ms="1132" started-at="2019-12-18T09:40:08Z" finished-at="2019-12-18T09:40:09Z">
+      <class name="com.edu.qingguo.AddressList">
+        <test-method status="PASS" signature="testList1()[pri:0, instance:com.edu.qingguo.AddressList@c818063]" name="testList1" duration-ms="21" started-at="2019-12-18T17:40:09Z" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testList1 -->
+        <test-method status="PASS" signature="testList2()[pri:0, instance:com.edu.qingguo.AddressList@c818063]" name="testList2" duration-ms="16" started-at="2019-12-18T17:40:09Z" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testList2 -->
+      </class> <!-- com.edu.qingguo.AddressList -->
+      <class name="com.edu.qingguo.NewAddress">
+        <test-method status="PASS" signature="testAdd1()[pri:0, instance:com.edu.qingguo.NewAddress@75bd9247]" name="testAdd1" duration-ms="20" started-at="2019-12-18T17:40:09Z" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testAdd1 -->
+      </class> <!-- com.edu.qingguo.NewAddress -->
+      <class name="com.edu.qingguo.DeleteAddress">
+        <test-method status="PASS" signature="test1()[pri:0, instance:com.edu.qingguo.DeleteAddress@7d417077]" name="test1" duration-ms="17" started-at="2019-12-18T17:40:09Z" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method status="PASS" signature="test2()[pri:0, instance:com.edu.qingguo.DeleteAddress@7d417077]" name="test2" duration-ms="19" started-at="2019-12-18T17:40:09Z" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test2 -->
+      </class> <!-- com.edu.qingguo.DeleteAddress -->
+      <class name="com.edu.qingguo.GetTransporFee">
+        <test-method status="PASS" signature="testGetFee()[pri:0, instance:com.edu.qingguo.GetTransporFee@2ff4f00f]" name="testGetFee" duration-ms="41" started-at="2019-12-18T17:40:09Z" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetFee -->
+        <test-method status="PASS" signature="testGetFee1()[pri:0, instance:com.edu.qingguo.GetTransporFee@2ff4f00f]" name="testGetFee1" duration-ms="32" started-at="2019-12-18T17:40:09Z" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testGetFee1 -->
+      </class> <!-- com.edu.qingguo.GetTransporFee -->
+      <class name="com.edu.qingguo.Submit">
+        <test-method status="PASS" signature="testSubmit()[pri:0, instance:com.edu.qingguo.Submit@3f0ee7cb]" name="testSubmit" duration-ms="27" started-at="2019-12-18T17:40:09Z" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSubmit -->
+      </class> <!-- com.edu.qingguo.Submit -->
+      <class name="com.edu.qingguo.LoginTest">
+        <test-method status="PASS" signature="testLogin2()[pri:0, instance:com.edu.qingguo.LoginTest@7cf10a6f]" name="testLogin2" duration-ms="850" started-at="2019-12-18T17:40:08Z" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLogin2 -->
+        <test-method status="PASS" signature="testLogin3()[pri:0, instance:com.edu.qingguo.LoginTest@7cf10a6f]" name="testLogin3" duration-ms="10" started-at="2019-12-18T17:40:09Z" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLogin3 -->
+        <test-method status="PASS" signature="testLoginSuccess()[pri:0, instance:com.edu.qingguo.LoginTest@7cf10a6f]" name="testLoginSuccess" duration-ms="14" started-at="2019-12-18T17:40:09Z" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testLoginSuccess -->
+      </class> <!-- com.edu.qingguo.LoginTest -->
+      <class name="com.edu.qingguo.SkulistTest">
+        <test-method status="PASS" signature="test1()[pri:0, instance:com.edu.qingguo.SkulistTest@5ba23b66]" name="test1" duration-ms="11" started-at="2019-12-18T17:40:09Z" description="指定商品" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test1 -->
+        <test-method status="PASS" signature="test2()[pri:0, instance:com.edu.qingguo.SkulistTest@5ba23b66]" name="test2" duration-ms="8" started-at="2019-12-18T17:40:09Z" description="指定商品" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test2 -->
+        <test-method status="PASS" signature="test3()[pri:0, instance:com.edu.qingguo.SkulistTest@5ba23b66]" name="test3" duration-ms="13" started-at="2019-12-18T17:40:09Z" description="所有商品" finished-at="2019-12-18T17:40:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- test3 -->
+      </class> <!-- com.edu.qingguo.SkulistTest -->
+    </test> <!-- test -->
+  </suite> <!-- Suite -->
+</testng-results>
