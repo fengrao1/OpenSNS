@@ -3,20 +3,20 @@
 <suite name="Suite1" verbose="1" > 
   <test name="test">
     <classes>
-    	<class name="jiaweiwen.register"/>
-    	<class name="jiaweiwen.login"/>
-		<class name="jiaweiwen.operation_tools"/>
-		<class name="jiaweiwen.usercenter"/>
-		<class name="lishaohan.L_Login"/>
-		<class name="fengrao.Demo1"/>
-      	<class name="fengrao.Demo2"/>
-		<class name="liziran.Demo1"/>
-      	<class name="liziran.Demo2"/>
-      	<class name="liziran.Demo3"/>
-      	<class name="zhaoruoxi.Demo"/>
-      	<class name="zhaoruoxi.Demo2"/>
-      	<class name="yangliu.Demo1"/>
-      	<class name="liumeining.DemoTest"/>
+    	<class name="com.opensns.frontstage.Register"/>
+    	<class name="com.opensns.frontstage.Login"/>
+		<class name="com.opensns.frontstage.Operation_tools"/>
+		<class name="com.opensns.frontstage.Usercenter"/>
+		<class name="com.opensns.frontstage.L_Login"/>
+		<class name="com.opensns.center.News1"/>
+      	<class name="com.opensns.center.News2"/>
+		<class name="com.opensns.center.Forum1"/>
+      	<class name="com.opensns.center.Forum2"/>
+      	<class name="com.opensns.center.HomePageTest"/>
+      	<class name="com.opensns.center.WeiboTest1"/>
+      	<class name="com.opensns.center.WeiboTest2"/>
+      	<class name="com.opensns.backstage.BackStage2"/>
+      	<class name="com.opensns.backstage.BackStage1"/>
     </classes>
   </test>
 </suite>
